@@ -1,0 +1,11 @@
+{
+    "cities" : [
+      {"name":"kinshasa"},
+      {"name":"Matadi"},
+      {"name":"Lubumbashi"},
+      {"name":"Kolwezi"},
+      {"name":"Cayenne"},
+      {"name":"Saint-Laurent"},
+      {"name":"Caire"}
+              ]
+}

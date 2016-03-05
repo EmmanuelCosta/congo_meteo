@@ -1,0 +1,13 @@
+{
+    "status" : [
+      {"clear sky":"Ensoleillé"},
+      {"few clouds":"Légèrement couvert"},
+      {"scattered clouds":"Gros nuage"},
+      {"broken clouds":"Nuages de pluie"},
+      {"shower rain":"Petits pluies"},
+      {"rain":"Pluvieux"},
+      {"thunderstorm":"Orageux"},
+      {"snow":"Neigeux"},
+      {"mist":"Brumeux"}
+    ]
+}
