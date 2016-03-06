@@ -1,11 +1,32 @@
 {
     "cities" : [
-      {"name":"kinshasa"},
-      {"name":"Matadi"},
+      {"name":"Kinshasa"},
       {"name":"Lubumbashi"},
+      {"name":"Baraka"},
+      {"name":"Bandundu"},
+      {"name":"Bikoro"},
+      {"name":"Boende"},
+      {"name":"Bukavu"},
+      {"name":"Bumba"},
+      {"name":"Bunia"},
+      {"name":"Buta"},
+      {"name":"Butembo"},
+      {"name":"Beni"},
+      {"name":"Boma"},
+    {"name":  "Gbadolite"},
+    {"name":  "Goma"},
+      {"name":"Kalemie"},
+      {"name":"Kananga"},
+      {"name":"Kikwit"},
+      {"name":"Kindu"},
+      {"name":"Kisangani"},
       {"name":"Kolwezi"},
-      {"name":"Cayenne"},
-      {"name":"Saint-Laurent"},
-      {"name":"Caire"}
-              ]
+      {"name":"Likasi"},
+    {"name":  "Matadi"},
+      {"name":"Mbandaka"},
+      {"name":"Mbuji-Mayi"},
+      {"name":"Muene-Ditu"},
+      {"name":"Tshikapa"},
+      {"name":"Zongo"}
+                    ]
 }
