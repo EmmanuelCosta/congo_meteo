@@ -9732,111 +9732,19 @@ a.button {
   transition-duration: 0s; }
 
 .pane {
-  background: url("../img/sun.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover; }
+  background-color: #D6D6D6; }
 
-.icon-sprite, .icon-about, .icon-clear, .icon-clouds-big, .icon-clouds, .icon-home, .icon-rain, .row_active i {
-  background-image: url("../img/icon-sf81fe3aabe.png");
-  background-repeat: no-repeat; }
-
-.icon-clear {
-  background-position: 0 -132px;
-  height: 50px;
-  width: 50px; }
-
-.icon-clouds-big {
-  background-position: 0 -182px;
-  height: 72px;
-  width: 96px; }
-
-.icon-clouds {
-  background-position: 0 0;
-  height: 50px;
-  width: 50px; }
-
-.icon-home {
-  background-position: -32px -50px;
-  height: 32px;
-  width: 32px; }
-
-.icon-rain {
-  background-image: url("../img/icon-sf81fe3aabe.png");
-  background-position: 0 -82px;
-  height: 50px;
-  width: 50px; }
-
-.row-title {
-  height: 60px;
-  line-height: 60px;
-  text-transform: uppercase;
-  background-color: #cb314b;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px 4px 0 0;
-  border-radius: 4px 4px 0 0;
-  -webkit-background-clip: padding;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
-  color: #fff;
-  font-size: 18px;
+.main_temp {
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  font-size: 5rem;
+  padding: 25px 0px 25px 0px;
   text-align: center;
-  font-weight: bold; }
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility; }
 
-.row {
-  height: 68px;
-  background-color: #394163;
-  margin: 1px 0;
-  position: relative; }
-
-.row i {
-  position: absolute;
-  left: 20px;
-  top: 5px; }
-
-.row .temperature {
-  color: #fff;
-  font-size: 18px;
-  position: absolute;
-  right: 20px;
-  line-height: 60px; }
-
-.row strong {
-  color: #fff;
+.main_description {
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  padding: 3px 0px 0px 0px;
+  text-align: center;
+  text-rendering: optimizeLegibility;
   text-transform: uppercase; }
-
-.row .date {
-  line-height: 60px;
-  font-size: 16px;
-  position: absolute;
-  left: 90px;
-  top: 0; }
-
-.row_active {
-  margin: 0;
-  height: 133px;
-  background-color: #e54b65;
-  color: white !important; }
-
-.row_active .date {
-  position: absolute;
-  top: 0;
-  left: 25px; }
-
-.row_active .temperature {
-  position: absolute;
-  top: 45px;
-  left: 25px;
-  font-size: 70px;
-  line-height: 70px; }
-
-.row_active i {
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  left: auto; }
-
-.row_active i {
-  background-position: 0 -182px;
-  height: 72px;
-  width: 96px; }

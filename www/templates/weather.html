@@ -1,16 +1,41 @@
 <ion-view >
-    <ion-nav-title>Météo {{weather.city.name}}</ion-nav-title>
-    <ion-content >
-      <div ng-controller="WeatherCtrl" class="list card" ng-repeat="t in weather.list" ng-click="expand($event)" >
-      <div class="item item-divider" ng-init='dateTranslator(t.dt)'>{{dateTranslator.day}} {{dateTranslator.date }}</div>
-      <div class=" row item item-body" ng-class="{row_active: $index==0}" >
-        <div class="temperature">{{Math.round(t.temp.day)}}°C</div>
-            <div class="date">
-                <strong ng-init='weatherStatus(t.weather[0].description)'>{{weatherStatus}}</strong>
 
-            </div>
-            <i class="icon-{{t.weather[0].main.toLowerCase() }}"></i>
+    <ion-nav-title>{{preferredCityInfo.city.name}}</ion-nav-title>
+    <ion-content>
+      <div ng-show="loading">chargement ...
+       <ion-spinner icon="circles" class="spinner-energized"></ion-spinner></div>
+    <div ng-hide="loading">
+       <!-- {{preferredCityInfo}} -->
+      <div class="card" ng-controller="WeatherCtrl"  ng-if="ready">
+
+        <div class="item">
+
+              <h2 class="text-center" ng-if="ready" ng-init='dateTranslator(preferredCityInfo.value.dt)' >
+                {{dateTranslator.day}} {{dateTranslator.date}}  </h2>
+           </div>
+
+           <div class="item item-body">
+             <img class="full-image"  ng-if="ready" ng-init='weatherImg(preferredCityInfo.value.weather[0].description)'src={{weatherImg}} />
+
       </div>
+      <div class="item">
+        <div class="text-center">
+    <div class="main_temp">{{Math.round(preferredCityInfo.value.main.temp)}}°C</div>
+
+        <p class="main_description" ng-if="ready"  ng-init='weatherStatus(preferredCityInfo.value.weather[0].description)'>{{weatherStatus}}</p>
     </div>
+
+   </div>
+    </div>
+
     </ion-content>
+    <div class="float-button">
+      <span class="height-fix">
+        <a ui-sref="add-trip" class="content">
+          <i class="ion-plus-round"></i>
+        </a>
+        
+      </span>
+    </div>
+
 </ion-view>
