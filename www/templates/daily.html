@@ -1,0 +1,18 @@
+<ion-view title="Dashboard">
+  <ion-nav-title>Semaine Météo - {{weather.city.name}}</ion-nav-title>
+    <ion-content >
+      <!-- {{weather.list}} -->
+    <ion-list>
+      <div ng-repeat="t in weather.list">
+        <a class="item item-avatar" href="#">
+      <img  ng-init='weatherImg(t.weather[0].description)'src="{{weatherImg}}">
+      <h2>{{dateTranslator.day}} {{dateTranslator.date }}</h2>
+      <p>{{Math.round(t.main.temp)}}°C </p>
+      <p ng-if="ready"  ng-init='weatherStatus(t.weather[0].description)'>{{t.weather[0].description}}</p>
+    </a>
+
+
+  </div>
+      </ion-list>
+    </ion-content>
+</ion-view>
