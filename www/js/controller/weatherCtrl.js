@@ -1,4 +1,4 @@
-starter.controller('WeatherCtrl', function($scope,$stateParams,WeatherResquestFactory){
+starter.controller('WeatherCtrl', function($scope,$filter,$stateParams,WeatherResquestFactory){
   $scope.loading=true;
   $scope.ready=false;
   $scope.Math = Math
@@ -19,6 +19,9 @@ starter.controller('WeatherCtrl', function($scope,$stateParams,WeatherResquestFa
     console.log(msg);
   }),
 
+$scope.getPreferredCityInfo = function(){
+  return preferredCityInfo;
+}
 
 $scope.weatherStatus= [];
 
@@ -29,6 +32,15 @@ $scope.getWeatherStatus = function(status){
  $scope.weatherStatus = status;
 })
 }
+$scope.getHumidity = function(t){
+    return t.humidity;
+}
+
+$scope.getSpeed = function(t){
+  var number =t.speed*3.6;
+    return $filter('number')(number, 1);
+}
+
 
 $scope.weatherImg=[];
 $scope.getWeatherImg = function(status){

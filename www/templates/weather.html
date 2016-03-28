@@ -4,27 +4,38 @@
       <div ng-show="loading">chargement ...
        <ion-spinner icon="circles" class="spinner-energized"></ion-spinner></div>
     <div ng-hide="loading">
-       <!-- {{preferredCityInfo}} -->
+
       <div class="card" ng-controller="WeatherCtrl"  ng-if="ready">
-
         <div class="item">
-
-              <h2 class="text-center" ng-if="ready" ng-init='date = dateTranslator(getPreferredCityDate())' >
-                {{date.day}} {{date.date}}  </h2>
+              <h2 class="text-center">Situation Actuelle</h2>
            </div>
 
            <div class="item item-body">
+             <!-- <h2 class="text-center" ng-if="ready" ng-init='date = dateTranslator(getPreferredCityDate())' >
+               {{date.day}} {{date.date}}  </h2> -->
              <img class="full-image"  ng-if="ready" ng-init='getWeatherImg(getPreferredCityDescription())'src={{weatherImg[0]}} />
-
-      </div>
+          </div>
       <div class="item">
         <div class="text-center">
     <div class="main_temp">{{getPreferredCityTemperature()}}°C</div>
-
         <p class="main_description" ng-if="ready"  ng-init='getWeatherStatus(getPreferredCityDescription())'>{{weatherStatus[0]}}</p>
     </div>
    </div>
     </div>
+    <div class="card"  ng-if="!loadingDaily">
+      <div class="item">
+            <h2 class="text-center" >
+              Prevision du Jour </h2>
+         </div>
+         <div class="item item-body" ng-init="t = getDailyWeather()[0]">
+           <!-- {{t}} -->
+          <p ng-init='getWeatherStatus(t.weather[0].description)'>Prévision générale: {{weatherStatus[0]}}</p>
+          <p>Temperatures : {{getTemperature(t.temp.min)}}/{{getTemperature(t.temp.max)}}°C</p>
+
+          <p>Humidité : {{getHumidity(t)}}%</p>
+          <p>Vitesse du vent : {{getSpeed(t)}} Km/h</p>
+        </div>
+  </div>
     </ion-content>
     <div class="float-button">
       <span class="height-fix">
