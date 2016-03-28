@@ -24,6 +24,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+@import "compass/css3";
+
 
 // .pane {
 //
@@ -54,36 +56,4 @@ padding: 3px 0px 0px 0px;
     text-align: center;
     text-rendering: optimizeLegibility;
     text-transform: uppercase;
-}
-
-.float-button {
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  width: 30px;
-  padding: 30px;
-  font-size: 40px;
-  background: $warning;
-  position: fixed;
-  bottom: 20px; /* Adjust to where you want it */
-  right: 20px; /* Adjust to where you want it */
-  z-index: 9999;
-}
-
-.float-button .height_fix {
-  margin-top: 100%;
-}
-
-.platform-android .float-button {
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  width: 30px;
-  padding: 30px;
-  font-size: 30px;
-  background: $assertive;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
 }

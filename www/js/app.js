@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var starter = angular.module('starter', ['ionic'])
+var starter = angular.module('starter', ['ionic','ng-mfb'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -63,3 +63,46 @@ templateUrl: 'templates/daily.html',
 
   $urlRouterProvider.otherwise('/tab/home');
 })
+
+
+starter.controller('floatingButtonMenuCtrl', function($scope,$window){
+
+  $scope.positions = ['tl', 'tr', 'br', 'bl'];
+
+  $scope.effects = [{
+    name: 'Choose an effect here',
+  },{
+    value: 'slidein',
+    name: 'Slide in + fade'
+  },{
+    value: 'zoomin',
+    name: 'Zoom in'
+  },{
+    value: 'fountain',
+    name: 'Fountain'
+  }];
+
+  $scope.buttons = [{
+    label: 'Actualiser',
+    icon: 'ion-refresh',
+    funct: 'refresh()'
+  },
+  {
+    label: 'Changer de ville',
+    icon: 'ion-paper-airplane',
+    funct: 'changeCity()'
+  }];
+
+  $scope.chosenEffect = 'zoomin';
+
+  $scope.refresh = function refresh() {
+
+    $window.location.reload(true);
+    }
+
+    $scope.changeCity = function changeCity() {
+
+      $window.location.reload(true);
+      }
+
+});

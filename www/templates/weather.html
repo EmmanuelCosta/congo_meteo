@@ -1,6 +1,8 @@
 <ion-view >
       <ion-nav-title ng-hide="loading">{{getPreferredCity()}}</ion-nav-title>
     <ion-content>
+    
+
       <div ng-show="loading">chargement ...
        <ion-spinner icon="circles" class="spinner-energized"></ion-spinner></div>
     <div ng-hide="loading">
@@ -29,19 +31,14 @@
          </div>
          <div class="item item-body" ng-init="t = getDailyWeather()[0]">
            <!-- {{t}} -->
-          <p ng-init='getWeatherStatus(t.weather[0].description)'>Prévision générale: {{weatherStatus[0]}}</p>
-          <p>Temperatures : {{getTemperature(t.temp.min)}}/{{getTemperature(t.temp.max)}}°C</p>
+
+          <p ng-init='getWeatherStatus(t.weather[0].description)'>Prévision générale: <strong>{{weatherStatus[0]}}</strong></p>
+          <p>Temperatures : <strong>{{getTemperature(t.temp.min)}}/{{getTemperature(t.temp.max)}}°C</strong></p>
 
           <p>Humidité : {{getHumidity(t)}}%</p>
           <p>Vitesse du vent : {{getSpeed(t)}} Km/h</p>
         </div>
   </div>
     </ion-content>
-    <div class="float-button">
-      <span class="height-fix">
-        <a ui-sref="add-trip" class="content">
-          <i class="ion-plus-round"></i>
-        </a>
-      </span>
-    </div>
+
 </ion-view>
