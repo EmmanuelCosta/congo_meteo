@@ -9,47 +9,106 @@ starter.controller('WeatherCtrl', function($scope,$stateParams,WeatherResquestFa
     idCity="Kinshasa"
   }
 
-  $scope.preferredCityInfo={}
+  var preferredCityInfo={}
   $scope.weather = WeatherResquestFactory.getWeatherInfos(idCity).then(function(weather){
        $scope.weather = weather;
         $scope.loading=false;
         $scope.ready=true;
-        $scope.preferredCityInfo={"city":weather.city,"value":weather.list[0]}
-  },function(msg){
-    console.log(msg);
-  }),
-
-  $scope.weatherDaily = WeatherResquestFactory.getDailyWeather(idCity).then(function(weather){
-       $scope.weatherDaily = weather;
-        $scope.loadingDaily=false;
+      preferredCityInfo={"city":weather.city,"value":weather.list[0]}
   },function(msg){
     console.log(msg);
   }),
 
 
-    $scope.dateTranslator = function(date){
-    $scope.dateTranslator = WeatherResquestFactory.getDateTranslator(date);
-  }
+$scope.weatherStatus= [];
 
-    $scope.weatherStatus = function(status){
+$scope.getWeatherStatus = function(status){
+    WeatherResquestFactory.getWeatherStatusTranslator(status).then(function(state){
+     $scope.weatherStatus.push(state);
+},function(msg){
+ $scope.weatherStatus = status;
+})
+}
 
-    $scope.weatherStatus = WeatherResquestFactory.getWeatherStatusTranslator(status).then(function(state){
-         $scope.weatherStatus = state;
-
-    },function(msg){
-     $scope.weatherStatus = status;
-    })
-    }
-    $scope.weatherImg = function(status){
-
-    $scope.weatherImg = WeatherResquestFactory.getWeatherImgPath(status).then(function(state){
-         $scope.weatherImg = state;
+$scope.weatherImg=[];
+$scope.getWeatherImg = function(status){
+    WeatherResquestFactory.getWeatherImgPath(status).then(function(state){
+      console.log(state);
+         $scope.weatherImg.push(state);
 
     },function(msg){
      $scope.weatherImg = status;
     })
-    }
+}
 
+
+$scope.getWeathers = function(){
+  return $scope.weather.list;
+}
+
+$scope.getWeatherDescription = function(weather){
+  return weather.weather[0].description;
+}
+  $scope.isLoading = function(){
+    return loading;
+  }
+
+  $scope.isReady = function(){
+    return ready;
+  }
+$scope.getPreferredCity = function(){
+  if($scope.loading)
+  return {};
+  return preferredCityInfo.city.name;
+}
+
+$scope.getPreferredCityDate = function(){
+  if($scope.loading)
+  return {};
+  return preferredCityInfo.value.dt;
+}
+
+$scope.getPreferredCityDescription = function(){
+  if($scope.loading)
+  return {};
+  return preferredCityInfo.value.weather[0].description;
+}
+
+$scope.getDailyCityDate = function (date){
+
+  if($scope.loadingDaily){
+      console.log("getDailyDate 1 ");
+    return date.dt;
+  }
+
+  console.log("getDailyDate 2 "+date.dt);
+  return date.dt;
+}
+$scope.getTemperature = function(t){
+
+  return Math.round(t);
+}
+$scope.getPreferredCityTemperature = function(){
+  if($scope.loading)
+  return {};
+  return $scope.getTemperature(preferredCityInfo.value.main.temp);
+}
+  $scope.weatherDaily = WeatherResquestFactory.getDailyWeather(idCity).then(function(dailyWeather){
+       $scope.weatherDaily = dailyWeather;
+        $scope.loadingDaily=false;
+  },function(msg){
+    console.log(msg);
+  })
+
+  $scope.getDailyWeather = function(){
+    return $scope.weatherDaily.list;
+  }
+
+
+$scope.dateTranslator = function(date){
+
+     return WeatherResquestFactory.getDateTranslator(date) ;
+}
 
 
 })

@@ -2,16 +2,17 @@
   <ion-nav-title>Semaine Météo - {{weather.city.name}}</ion-nav-title>
     <ion-content >
       <!-- {{weather.list}} -->
-    <ion-list>
-      <div ng-repeat="t in weather.list">
+      <div ng-show="loadingDaily">chargement ...
+       <ion-spinner icon="circles" class="spinner-energized"></ion-spinner></div>
+    <ion-list ng-hide="loadingDaily">
+      <div ng-repeat="t in getDailyWeather()">
         <a class="item item-avatar" href="#">
-      <img  ng-init='weatherImg(t.weather[0].description)'src="{{weatherImg}}">
-      <h2>{{dateTranslator.day}} {{dateTranslator.date }}</h2>
-      <p>{{Math.round(t.main.temp)}}°C </p>
-      <p ng-if="ready"  ng-init='weatherStatus(t.weather[0].description)'>{{t.weather[0].description}}</p>
+      <img  ng-if="!loadingDaily" ng-init='getWeatherImg(getWeatherDescription(t))'src="{{weatherImg[$index]}}">
+        <h2  ng-if="!loadingDaily" ng-init='date = dateTranslator(getDailyCityDate(t))' >
+          {{date.day}} {{date.date}}  </h2>
+      <p>{{getTemperature(t.temp.min)}}/{{getTemperature(t.temp.max)}}°C </p>
+      <p ng-init='getWeatherStatus(t.weather[0].description)'>{{weatherStatus[$index]}}</p>
     </a>
-
-
   </div>
       </ion-list>
     </ion-content>
