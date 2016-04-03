@@ -1,0 +1,25 @@
+<ion-modal-view>
+  <div ng-controller="HomeCtrl">
+    <ion-header-bar class="bar-positive">
+         <p class="title">Choississez une autre ville</p>
+         <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+       </ion-header-bar>
+        <ion-content>
+   <form class="list" ng-submit="search(city)">
+   <div class="item item-input item-select">
+      <div class="input-label">
+        Ville
+      </div>
+
+      <select  class="col col-80" ng-model="city" >
+        <option ng-repeat="town in towns" value={{town.name}}>{{town.name}}</option>
+
+      </select>
+   </div>
+    <div class="padding">
+        <button class="button button-block button-calm" ng-click="modal.hide()">Envoyer</button>
+    </div>
+  </form>
+</ion-content>
+</div>
+</ion-modal-view>

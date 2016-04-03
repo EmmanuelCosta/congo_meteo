@@ -16,13 +16,14 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/non_native/js/angular-modal-service.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
 
-            <script src="js/directive/mfb-directive.js"></script>
+    <script src="js/directive/mfb-directive.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controller/homeCtrl.js"></script>
       <script src="js/controller/weatherCtrl.js"></script>
@@ -39,13 +40,15 @@
 
 
       </ion-nav-view>
+
       <div  ng-hide="loadingDaily" ng-controller="floatingButtonMenuCtrl as ctrl" >
         <nav  mfb-menu position="br" effect="fountain" label="menu"
        active-icon="ion-edit" resting-icon="ion-plus-round"
        toggling-method="click">
-            <button mfb-button icon="{{button.icon}}" ng-click="{{button.funct}}"
-               label="{{button.label}}" ng-repeat="button in buttons"></button>
+            <button mfb-button mfb-button-close  icon="{{button.icon}}" ng-click="{{button.funct}}"
+               label="{{button.label}}" ng-repeat="button in buttons" ></button>
           </nav>
+
       </div>
 
 

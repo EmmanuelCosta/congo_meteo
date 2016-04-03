@@ -1,4 +1,4 @@
-starter.controller('WeatherCtrl', function($scope,$filter,$stateParams,WeatherResquestFactory){
+starter.controller('WeatherCtrl', function($scope,$filter,$stateParams,WeatherResquestFactory,CongoWeatherFactory){
   $scope.loading=true;
   $scope.ready=false;
   $scope.Math = Math
@@ -9,7 +9,8 @@ starter.controller('WeatherCtrl', function($scope,$filter,$stateParams,WeatherRe
     idCity="Kinshasa"
   }
 
-  var preferredCityInfo={}
+
+//  var preferredCityInfo=CongoWeatherFactory.getDef
   $scope.weather = WeatherResquestFactory.getWeatherInfos(idCity).then(function(weather){
        $scope.weather = weather;
         $scope.loading=false;
@@ -106,10 +107,11 @@ $scope.getPreferredCityTemperature = function(){
   return $scope.getTemperature(preferredCityInfo.value.main.temp);
 }
   $scope.weatherDaily = WeatherResquestFactory.getDailyWeather(idCity).then(function(dailyWeather){
-       $scope.weatherDaily = dailyWeather;
+     $scope.weatherDaily = dailyWeather;
         $scope.loadingDaily=false;
-  },function(msg){
-    console.log(msg);
+          console.log("========>>****---- ="+$scope.loadingDaily+  " "+dailyWeather.list[0].weather[0].description);
+    },function(msg){
+    console.log("========>> ="+msg);
   })
 
   $scope.getDailyWeather = function(){
@@ -118,9 +120,6 @@ $scope.getPreferredCityTemperature = function(){
 
 
 $scope.dateTranslator = function(date){
-
      return WeatherResquestFactory.getDateTranslator(date) ;
 }
-
-
 })

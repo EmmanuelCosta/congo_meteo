@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var starter = angular.module('starter', ['ionic','ng-mfb'])
+var starter = angular.module('starter', ['ionic','ng-mfb','angularModalService'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -65,7 +65,7 @@ templateUrl: 'templates/daily.html',
 })
 
 
-starter.controller('floatingButtonMenuCtrl', function($scope,$window){
+.controller('floatingButtonMenuCtrl', function($scope,$window,$ionicModal,$location){
 
   $scope.positions = ['tl', 'tr', 'br', 'bl'];
 
@@ -89,20 +89,24 @@ starter.controller('floatingButtonMenuCtrl', function($scope,$window){
   },
   {
     label: 'Changer de ville',
-    icon: 'ion-paper-airplane',
+    icon: 'ion-arrow-swap',
     funct: 'changeCity()'
   }];
 
   $scope.chosenEffect = 'zoomin';
 
-  $scope.refresh = function refresh() {
-
+  $scope.refresh = function () {
     $window.location.reload(true);
+  }
+
+    $scope.changeCity = function () {
+
+      $ionicModal.fromTemplateUrl('templates/cityForm.html', {
+        scope: $scope
+      }).then(function(modal) {
+        $scope.modal = modal;
+        modal.show();
+      });
     }
 
-    $scope.changeCity = function changeCity() {
-
-      $window.location.reload(true);
-      }
-
-});
+})

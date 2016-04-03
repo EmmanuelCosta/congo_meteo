@@ -2,8 +2,12 @@
   <ion-nav-title>Semaine Météo - {{weather.city.name}}</ion-nav-title>
     <ion-content >
       <!-- {{weather.list}} -->
-      <div ng-show="loadingDaily">chargement ...
-       <ion-spinner icon="circles" class="spinner-energized"></ion-spinner></div>
+      <div ng-show="loadingDaily" class="sk-folding-cube">
+        <div class="sk-cube1 sk-cube"></div>
+        <div class="sk-cube2 sk-cube"></div>
+        <div class="sk-cube4 sk-cube"></div>
+        <div class="sk-cube3 sk-cube"></div>
+      </div>
     <ion-list ng-hide="loadingDaily">
       <div ng-repeat="t in getDailyWeather()">
         <a class="item item-avatar" href="#">

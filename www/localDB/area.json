@@ -28,5 +28,8 @@
       {"name":"Muene-Ditu"},
       {"name":"Tshikapa"},
       {"name":"Zongo"}
-                    ]
+    ],
+    "default":{
+      "name":"Kinshasa"
+    }
 }
