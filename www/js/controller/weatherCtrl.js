@@ -3,22 +3,30 @@ starter.controller('WeatherCtrl', function($scope,$filter,$stateParams,WeatherRe
   $scope.ready=false;
   $scope.Math = Math
   $scope.loadingDaily=true;
+
   //console.log("callllllllllllllllllllllllllllllll "+$stateParams.city);
-  var idCity = $stateParams.city;
-  if(typeof idCity === "undefined"){
-    idCity="Kinshasa"
-  }
+
 
 
 //  var preferredCityInfo=CongoWeatherFactory.getDef
-  $scope.weather = WeatherResquestFactory.getWeatherInfos(idCity).then(function(weather){
+$scope.defaultCity = CongoWeatherFactory.getDefaultTown();
+// console.log("====>   "+defaultTown);
+$scope.weatherDaily = WeatherResquestFactory.getDailyWeather($scope.defaultCity).then(function(dailyWeather){
+   $scope.weatherDaily = dailyWeather;
+      $scope.loadingDaily=false;
+      //  console.log("========>>****---- ="+$scope.loadingDaily+  " "+dailyWeather.list[0].weather[0].description);
+  },function(msg){
+  console.log("========>> ="+msg);
+})
+
+  $scope.weather = WeatherResquestFactory.getWeatherInfos($scope.defaultCity).then(function(weather){
        $scope.weather = weather;
         $scope.loading=false;
         $scope.ready=true;
       preferredCityInfo={"city":weather.city,"value":weather.list[0]}
   },function(msg){
-    console.log(msg);
-  }),
+    console.log("================> "+msg);
+  })
 
 $scope.getPreferredCityInfo = function(){
   return preferredCityInfo;
@@ -90,11 +98,9 @@ $scope.getPreferredCityDescription = function(){
 $scope.getDailyCityDate = function (date){
 
   if($scope.loadingDaily){
-      console.log("getDailyDate 1 ");
+
     return date.dt;
   }
-
-  console.log("getDailyDate 2 "+date.dt);
   return date.dt;
 }
 $scope.getTemperature = function(t){
@@ -106,13 +112,7 @@ $scope.getPreferredCityTemperature = function(){
   return {};
   return $scope.getTemperature(preferredCityInfo.value.main.temp);
 }
-  $scope.weatherDaily = WeatherResquestFactory.getDailyWeather(idCity).then(function(dailyWeather){
-     $scope.weatherDaily = dailyWeather;
-        $scope.loadingDaily=false;
-          console.log("========>>****---- ="+$scope.loadingDaily+  " "+dailyWeather.list[0].weather[0].description);
-    },function(msg){
-    console.log("========>> ="+msg);
-  })
+
 
   $scope.getDailyWeather = function(){
     return $scope.weatherDaily.list;

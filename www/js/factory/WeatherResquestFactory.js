@@ -36,33 +36,33 @@ starter.factory('WeatherResquestFactory',function($http,$q,$filter){
       },
 
       getDailyWeather : function getDailyWeather(city){
-    console.log("************call try = "+factory.retryDaily);
+  //  console.log("************call try = "+factory.retryDaily);
   //cd2a96cc934942f30bdeb1789109c2ea bilute bilutemailinator
   //fd20c0280bee7d8fb8ed2fad6a7eba21
         url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "&mode=json&units=metric&cnt=10"+"&APPID=fd20c0280bee7d8fb8ed2fad6a7eba21";
           var deferred = $q.defer();
 
           if(factory.cacheDaily !=false){
-    console.log("************call here 1 "+factory.cacheDaily);
+  //  console.log("************call here 1 "+factory.cacheDaily);
             deferred.resolve(factory.cacheDaily);
           }else{
-                console.log("************call here 2");
+              //  console.log("************call here 2");
                $http.get(url)
                 .success(function(data,status){
 
                   factory.cacheDaily = data;
-                  console.log("************call here 2 = "+ status);
+                  //console.log("************call here 2 = "+ status);
                    deferred.resolve(data);
 
                 })
                 .error(function(data, status){
-  console.log("************call status = "+status);
-                  if(factory.retryDaily<5){
+//  console.log("************call status = "+status);
+                  if(factory.retryDaily<10){
 
-                    console.log("************call retry = "+factory.retryDaily);
+                  //  console.log("************call retry = "+factory.retryDaily);
                     factory.retryDaily++;
                   }else{
-                        console.log("************call end 1");
+                      //  console.log("************call end 1");
                     factory.retryDaily =0;
                       deferred.reject("impossible de recuperer les infos du serveur REST");
                   }

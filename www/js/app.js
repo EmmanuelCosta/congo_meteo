@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var starter = angular.module('starter', ['ionic','ng-mfb','angularModalService'])
+var starter = angular.module('starter', ['ionic','ionic.utils','ng-mfb','angularModalService'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,6 +22,51 @@ var starter = angular.module('starter', ['ionic','ng-mfb','angularModalService']
     }
   });
 })
+.run(function($localstorage) {
+//$localstorage.clearAll();
+
+
+if($localstorage.get("default") === '{}'){
+  alert($localstorage.get("default"));
+  var areaJSON={
+      "cities" : [
+        {"name":"Kinshasa"},
+        {"name":"Lubumbashi"},
+        {"name":"Baraka"},
+        {"name":"Bandundu"},
+        {"name":"Bikoro"},
+        {"name":"Boende"},
+        {"name":"Bukavu"},
+        {"name":"Bumba"},
+        {"name":"Bunia"},
+        {"name":"Buta"},
+        {"name":"Butembo"},
+        {"name":"Beni"},
+        {"name":"Boma"},
+      {"name":  "Gbadolite"},
+      {"name":  "Goma"},
+        {"name":"Kalemie"},
+        {"name":"Kananga"},
+        {"name":"Kikwit"},
+        {"name":"Kindu"},
+        {"name":"Kisangani"},
+        {"name":"Kolwezi"},
+        {"name":"Likasi"},
+      {"name":  "Matadi"},
+        {"name":"Mbandaka"},
+        {"name":"Mbuji-Mayi"},
+        {"name":"Muene-Ditu"},
+        {"name":"Tshikapa"},
+        {"name":"Zongo"}
+      ]
+  };
+
+  $localstorage.set('default', 'Kinshasa');
+
+  $localstorage.setObject('post', areaJSON);
+}
+
+})
 
 .config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
   if (ionic.Platform.isAndroid()) {
@@ -37,7 +82,7 @@ var starter = angular.module('starter', ['ionic','ng-mfb','angularModalService']
   $stateProvider.state('weather', {
     url: '/weather/:city/',
     templateUrl: 'templates/weather.html',
-    controller :'WeatherCtrl'
+    controller :'WeatioherCtrl'
   })
 
 
